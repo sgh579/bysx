@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    protocol.cpp \
     reader.cpp \
     writer.cpp
 
 HEADERS += \
     mainwindow.h \
+    protocol.h \
     reader.h \
     writer.h
 
