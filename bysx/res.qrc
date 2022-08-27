@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pic/EXEL.png</file>
+        <file>pic/读取数据库.png</file>
+        <file>pic/一键同步.png</file>
+    </qresource>
+</RCC>
