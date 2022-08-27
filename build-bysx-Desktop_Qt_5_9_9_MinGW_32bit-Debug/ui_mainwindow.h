@@ -38,13 +38,14 @@ public:
     QLabel *label_2;
     QPushButton *pushButton_5;
     QPushButton *pushButton;
+    QPushButton *debugButton;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(1071, 610);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/\350\257\273\345\217\226\346\225\260\346\215\256\345\272\223.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
@@ -206,7 +207,7 @@ public:
         tableWidget->horizontalHeader()->setCascadingSectionResizes(false);
         tableWidget->horizontalHeader()->setHighlightSections(false);
         tableWidget->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
-        tableWidget->verticalHeader()->setVisible(true);
+        tableWidget->verticalHeader()->setVisible(false);
 
         verticalLayout->addWidget(tableWidget);
 
@@ -260,13 +261,18 @@ public:
 
         horizontalLayout->addWidget(pushButton);
 
+        debugButton = new QPushButton(widget);
+        debugButton->setObjectName(QStringLiteral("debugButton"));
+
+        horizontalLayout->addWidget(debugButton);
+
 
         verticalLayout->addWidget(widget);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 1071, 22));
         MainWindow->setMenuBar(menubar);
 
         retranslateUi(MainWindow);
@@ -350,6 +356,7 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "\345\246\202\351\234\200\351\200\211\346\213\251\347\211\271\345\256\232\346\227\266\351\227\264\346\256\265\350\257\273\345\217\226\357\274\214\350\257\267\345\234\250\346\255\244\350\276\223\345\205\245\346\227\266\351\227\264", Q_NULLPTR));
         pushButton_5->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "\345\257\274\345\207\272\345\210\260exel", Q_NULLPTR));
+        debugButton->setText(QApplication::translate("MainWindow", "debug", Q_NULLPTR));
     } // retranslateUi
 
 };
