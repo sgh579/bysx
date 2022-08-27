@@ -3,8 +3,29 @@
 
 #include <QMainWindow>
 
+
+#include <QPushButton>
+#include <QGridLayout>
+#include <QLabel>
+#include <QString>
+#include <QtSerialPort/QSerialPort>
+#include <QStringList>
+#include <QTimer>
+#include <QComboBox>
+
+#include <QTextStream>
+#include <QFile>
+#include <QStringList>
+#include "reader.h"
+#include <QDebug>
+#include "writer.h"
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
+class QPushButton;
+class QLabel;
+class QComboBox;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -17,5 +38,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QString serialPortName;
+    QSerialPort serialPort;
+    reader *serialPortReader;
+    writer *serialPortWriter;
+    QTextStream m_standardOutput;
+
+
+private slots:
+    void debugButtonCallback();
+
 };
 #endif // MAINWINDOW_H
