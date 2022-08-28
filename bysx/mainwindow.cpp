@@ -12,41 +12,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui_equ = new equipment();
 
     m_standardOutput<<"hello bysx,here is mainwindow()"<<endl;
+
+    //debug按钮，连接回调函数
     connect(ui->debugButton,&QPushButton::clicked,this,&MainWindow::debugButtonCallback);
 
     //定时刷新串口
     connect(&findPortTimer,&QTimer::timeout,this,&MainWindow::findPort);
     findPortTimer.start(findPortTimerPeriod);
 
-
-
     //连接串口
     connect(ui->pushButton_2,&QPushButton::clicked,this,&MainWindow::setPortParameter);
 
-
-
-//    serialPort.close();//先关上
-//    serialPort.setPortName("COM5");
-//    serialPort.setParity(QSerialPort::EvenParity);
-//    int serialPortBaudRate = 9600;
-//    serialPort.setBaudRate(serialPortBaudRate);
-//    if(!serialPort.open(QIODevice::ReadWrite))
-//    {
-//        qDebug()<<tr("can't open %1 ,error code %2")
-//                  .arg(serialPort.portName()).arg(serialPort.error())<<endl;
-//        return;
-//    }
-//    else
-//        qDebug()<<tr(" open %1 successfully")
-//                  .arg(serialPort.portName())<<endl;
-
-
-//    serialPortWriter = new writer(&serialPort);
-//    m_standardOutput<<"writer object built successfully"<<endl;
-//    serialPortWriter->write();
-
-//    serialPortReader = new reader(&serialPort);
-//    connect(serialPortReader,&reader::read_ready_decode_signal,ui_pro,&protocol::decode);
 
 
 
@@ -57,6 +33,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//由debug按钮触发的 执行一定函数功能
 void MainWindow::debugButtonCallback()
 {
 
@@ -66,10 +43,11 @@ void MainWindow::debugButtonCallback()
 //    else qDebug()<<"decode fail"<<endl;
 
     serialPortReader->emit_debug_signal();
-    ui_pro->printMember();
+    //ui_pro->printMember();
 
 }
 
+//由定时器自动触发的寻找串口
 void MainWindow::findPort()
 {
     QString temp=ui->serialPort_comboBox->currentText();
