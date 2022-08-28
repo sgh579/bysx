@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     serialPort.close();//先关上
-    serialPort.setPortName("COM3");
+    serialPort.setPortName("COM5");
     serialPort.setParity(QSerialPort::EvenParity);
     int serialPortBaudRate = 9600;
     serialPort.setBaudRate(serialPortBaudRate);
@@ -36,7 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     serialPortWriter->write();
 
     serialPortReader = new reader(&serialPort);
-    connect(serialPortReader,&reader::read_ready_decode_signal,ui_pro,&protocol::decode);
+    //connect(serialPortReader,&reader::read_ready_decode_signal,ui_pro,&protocol::decode);
+    connect(serialPortReader,&reader::read_ready_decode_signal,this,&MainWindow::call_decode);
 
 
 }
@@ -50,9 +51,20 @@ void MainWindow::debugButtonCallback()
 {
 
     //serialPortWriter->write();
-    QByteArray debug_read_data = QByteArray::fromHex("fefe681855600600006893064b88933933334116");
-    if(ui_pro->decode(debug_read_data) == true)qDebug()<<"decode sucessfull"<<endl;
-    else qDebug()<<"decode fail"<<endl;
+//    QByteArray debug_read_data = QByteArray::fromHex("fefe681855600600006893064b88933933334116");
+//    if(ui_pro->decode(debug_read_data) == true)qDebug()<<"decode sucessfull"<<endl;
+//    else qDebug()<<"decode fail"<<endl;
+
+    serialPortReader->emit_debug_signal();
     ui_pro->printMember();
+
+}
+
+
+void MainWindow::call_decode(QByteArray m_readData)
+{
+    qDebug()<<"call_decode"<<endl;
+    if(ui_pro->decode(m_readData) == true)qDebug()<<"decode sucessfull"<<endl;
+        else qDebug()<<"decode fail"<<endl;
 
 }

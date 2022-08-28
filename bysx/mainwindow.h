@@ -39,6 +39,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private:
     Ui::MainWindow *ui;
     QString serialPortName;
@@ -49,8 +50,9 @@ private:
     protocol *ui_pro;
     equipment *ui_equ;
 
-private slots:
+public slots:
     void debugButtonCallback();
+    void call_decode(QByteArray m_readData);
 
 };
 #endif // MAINWINDOW_H

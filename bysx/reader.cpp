@@ -23,6 +23,7 @@ reader::reader(QSerialPort *serialPort, QObject *parent)
 
 
 
+
 }
 
 reader::~reader()
@@ -39,6 +40,8 @@ void reader::handleReadyRead()
 
 void reader::handleTimeout()
 {
+
+
     if (m_readData.isEmpty()) {
         m_standardOutput << QObject::tr("No data was currently available for reading from port %1").arg(m_serialPort->portName()) << endl;
         //qDebug()<<QObject::tr("No data was currently available for reading from port %1").arg(m_serialPort->portName()) << endl;
@@ -69,7 +72,14 @@ void reader::handleError(QSerialPort::SerialPortError serialPortError)
 
 
 
+void reader::emit_debug_signal()
+{
+    qDebug()<<"emit_debug_signal"<<endl;
+    //debug
+    QByteArray debug_read_data = QByteArray::fromHex("fefe681855600600006893064b88933933334116");
+    emit read_ready_decode_signal(debug_read_data);
 
+}
 
 
 
