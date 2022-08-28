@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QTableWidget>
+#include <QFileDialog>
+#include <QDesktopServices>
+#include <QMessageBox>
+#include <QAxObject>
 
 #include <QPushButton>
 #include <QGridLayout>
@@ -34,10 +38,13 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    QAxObject *worksheet;
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void tableToExcel();
+    bool SetCellData(int row, int column, QVariant data);
 
 
 private:
@@ -51,6 +58,7 @@ private:
     equipment *ui_equ;
     int findPortTimerPeriod;
     QTimer findPortTimer;
+
 
 public slots:
     void debugButtonCallback();

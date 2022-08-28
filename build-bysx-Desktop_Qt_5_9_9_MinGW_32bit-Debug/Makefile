@@ -226,6 +226,7 @@ Makefile: ../bysx/bysx.pro D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmake.
 		D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/moc.prf \
 		D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/win32/opengl.prf \
 		D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/uic.prf \
+		D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/win32/dumpcpp.prf \
 		D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/qmake_use.prf \
 		D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/file_copies.prf \
 		D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/win32/windows.prf \
@@ -235,6 +236,8 @@ Makefile: ../bysx/bysx.pro D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmake.
 		D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/lex.prf \
 		../bysx/bysx.pro \
 		D:/QT/qt5.9/5.9.9/mingw53_32/lib/qtmaind.prl \
+		D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5AxContainer.prl \
+		D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5AxBase.prl \
 		D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5Widgets.prl \
 		D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5Gui.prl \
 		D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl \
@@ -405,6 +408,7 @@ D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/resources.prf:
 D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/moc.prf:
 D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/win32/opengl.prf:
 D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/uic.prf:
+D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/win32/dumpcpp.prf:
 D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/qmake_use.prf:
 D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/file_copies.prf:
 D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/win32/windows.prf:
@@ -414,6 +418,8 @@ D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/yacc.prf:
 D:/QT/qt5.9/5.9.9/mingw53_32/mkspecs/features/lex.prf:
 ../bysx/bysx.pro:
 D:/QT/qt5.9/5.9.9/mingw53_32/lib/qtmaind.prl:
+D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5AxContainer.prl:
+D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5AxBase.prl:
 D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5Widgets.prl:
 D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5Gui.prl:
 D:/QT/qt5.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl:
