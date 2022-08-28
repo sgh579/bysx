@@ -49,9 +49,13 @@ private:
     QTextStream m_standardOutput;
     protocol *ui_pro;
     equipment *ui_equ;
+    int findPortTimerPeriod;
+    QTimer findPortTimer;
 
 public slots:
     void debugButtonCallback();
+    void findPort();//主动更新可用串口
+    void setPortParameter();//设置要打开的串口参数，并打开，实例化writer,reader对象，开始接收
 
 
 };

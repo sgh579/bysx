@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -39,13 +40,17 @@ public:
     QPushButton *pushButton_5;
     QPushButton *pushButton;
     QPushButton *debugButton;
+    QWidget *widget_2;
+    QHBoxLayout *horizontalLayout_2;
+    QComboBox *serialPort_comboBox;
+    QPushButton *pushButton_2;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1071, 610);
+        MainWindow->resize(928, 610);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/\350\257\273\345\217\226\346\225\260\346\215\256\345\272\223.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
@@ -269,10 +274,27 @@ public:
 
         verticalLayout->addWidget(widget);
 
+        widget_2 = new QWidget(centralwidget);
+        widget_2->setObjectName(QStringLiteral("widget_2"));
+        horizontalLayout_2 = new QHBoxLayout(widget_2);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        serialPort_comboBox = new QComboBox(widget_2);
+        serialPort_comboBox->setObjectName(QStringLiteral("serialPort_comboBox"));
+
+        horizontalLayout_2->addWidget(serialPort_comboBox);
+
+        pushButton_2 = new QPushButton(widget_2);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+
+        horizontalLayout_2->addWidget(pushButton_2);
+
+
+        verticalLayout->addWidget(widget_2);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1071, 22));
+        menubar->setGeometry(QRect(0, 0, 928, 22));
         MainWindow->setMenuBar(menubar);
 
         retranslateUi(MainWindow);
@@ -357,6 +379,7 @@ public:
         pushButton_5->setText(QString());
         pushButton->setText(QApplication::translate("MainWindow", "\345\257\274\345\207\272\345\210\260exel", Q_NULLPTR));
         debugButton->setText(QApplication::translate("MainWindow", "debug", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("MainWindow", "\350\277\236\346\216\245", Q_NULLPTR));
     } // retranslateUi
 
 };
