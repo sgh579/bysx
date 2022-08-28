@@ -10,7 +10,7 @@ class protocol : public QObject
     Q_OBJECT
 public:
     explicit protocol(QObject *parent = nullptr);
-    ~protocol();
+//    ~protocol();
     void getAddress();
     void code();
 public slots:

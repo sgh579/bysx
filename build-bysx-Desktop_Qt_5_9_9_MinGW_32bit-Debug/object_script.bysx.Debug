@@ -7,6 +7,7 @@ INPUT(
 ./debug\writer.o
 ./debug\qrc_res.o
 ./debug\moc_mainwindow.o
+./debug\moc_protocol.o
 ./debug\moc_reader.o
 ./debug\moc_writer.o
 );
