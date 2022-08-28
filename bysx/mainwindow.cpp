@@ -29,25 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
     //连接串口
     connect(ui->pushButton_2,&QPushButton::clicked,this,&MainWindow::setPortParameter);
 
-//以下为设置变量的调试用默认值
-    QString ID=QString::number(1);//表号 12位
-    //时间 找找时间相关的变量
-    QByteArray addr=QByteArray::number(2);//通信地址
-    QString addr2 = addr;
-    QString ratedVoltage=QString::number(3);//额定电压
-    QString ratedCurrent=QString::number(4);//额定电流
-    QString constant_active=QString::number(5);//有功常数
-    QString constant_reactive=QString::number(6);//无功常数
-    QString level_active=QString::number(7);//有功等级
-    QString level_reactive=QString::number(8);//无功等级
-//...............................................................//
+
 
     //以下为变量导入tableWidget
 
 
 
 
-    tableToExcel();
+//    tableToExcel();
 }
 
 MainWindow::~MainWindow()

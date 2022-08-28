@@ -81,5 +81,27 @@ void protocol::talk()
 bool protocol::decode_frame(const QByteArray data)
 {
     qDebug()<<"decode_frame"<<endl;
+    QByteArray dataID = data.mid(0,4);
+
+    //时间
+    if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[4] == 0x04)){
+
+    }
+
+    //日期
+    if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[4] == 0x04)){
+
+    }
+
+    //表号
+    if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[4] == 0x04)){
+
+    }
+
+    //时间
+    if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[4] == 0x04)){
+
+    }
+
     return true;
 }

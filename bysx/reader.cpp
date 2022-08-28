@@ -10,7 +10,7 @@ reader::reader(QSerialPort *serialPort, QObject *parent)
     , m_serialPort(serialPort)
     , m_standardOutput(stdout)
     , decodeTimerPeriod(100)
-    , printReadDataPeriod(250)//4hz
+    , printReadDataPeriod(10000)
 {
     connect(m_serialPort, &QSerialPort::readyRead, this, &reader::handleReadyRead);
     connect(m_serialPort, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error),
@@ -52,7 +52,7 @@ void reader::handleTimeout()
     } else {
         m_standardOutput << QObject::tr("Data successfully received from port %1").arg(m_serialPort->portName()) << endl;
 
-        m_standardOutput << m_readData << endl;//通过标准输出把读到的在终端里输出
+        m_standardOutput << m_readData.toHex() << endl;//通过标准输出把读到的在终端里输出
         //emit read_ready_decode_signal(m_readData);
         //m_readData.clear();
 
@@ -79,8 +79,11 @@ void reader::emit_debug_signal()
 {
     qDebug()<<"emit_debug_signal"<<endl;
     //debug
-    QByteArray debug_read_data = QByteArray::fromHex("fefe681855600600006893064b88933933334116fdbbddfefe681855600600006893064b88933933334116");
-    emit read_ready_decode_signal(debug_read_data);
+//    QByteArray debug_read_data = QByteArray::fromHex("fefe681855600600006893064b88933933334116fdbbddfefe681855600600006893064b88933933334116");
+//    emit read_ready_decode_signal(debug_read_data);
+
+    emit read_ready_decode_signal(m_readData);
+    m_readData.clear();
 
 }
 
