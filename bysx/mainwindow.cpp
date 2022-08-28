@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     serialPortWriter->write();
 
     serialPortReader = new reader(&serialPort);
-    //connect(serialPortReader,&reader::read_ready_decode_signal,ui_pro,&protocol::decode);
+    connect(serialPortReader,&reader::read_ready_decode_signal,ui_pro,&protocol::decode);
 
 
 }

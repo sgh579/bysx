@@ -1,8 +1,9 @@
 #include "protocol.h"
-
-protocol::protocol()
+#include <QCoreApplication>
+protocol::protocol(QObject *parent)
+    : QObject(parent)
 {
-
+    qDebug()<<"here are protocol"<<endl;
 }
 
 bool protocol::decode(const QByteArray m_readData)

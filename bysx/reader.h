@@ -2,7 +2,7 @@
 #define READER_H
 
 #include <QtSerialPort/QSerialPort>
-
+#include "protocol.h"
 #include <QTextStream>
 #include <QTimer>
 #include <QByteArray>

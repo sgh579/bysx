@@ -3,12 +3,17 @@
 #include <QByteArray>
 #include <QString>
 #include <QDebug>
-class protocol
+#include <reader.h>
+#include <QObject>
+class protocol : public QObject
 {
+    Q_OBJECT
 public:
-    protocol();
+    explicit protocol(QObject *parent = nullptr);
+    ~protocol();
     void getAddress();
     void code();
+public slots:
     bool decode(const QByteArray m_readData);
     void printMember();
 
