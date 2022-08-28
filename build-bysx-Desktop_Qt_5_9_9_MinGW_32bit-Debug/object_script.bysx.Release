@@ -1,0 +1,12 @@
+INPUT(
+./release\equipment.o
+./release\main.o
+./release\mainwindow.o
+./release\protocol.o
+./release\reader.o
+./release\writer.o
+./release\qrc_res.o
+./release\moc_mainwindow.o
+./release\moc_reader.o
+./release\moc_writer.o
+);

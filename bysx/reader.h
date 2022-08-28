@@ -15,6 +15,9 @@ public:
     explicit reader(QSerialPort *serialPort, QObject *parent = nullptr);
     ~reader();
 
+signals:
+    void read_ready_decode_signal(const QByteArray m_readData);
+
 private slots:
     void handleReadyRead();
     void handleTimeout();

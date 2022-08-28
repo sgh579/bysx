@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    equipment.cpp \
     main.cpp \
     mainwindow.cpp \
     protocol.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
     writer.cpp
 
 HEADERS += \
+    equipment.h \
     mainwindow.h \
     protocol.h \
     reader.h \

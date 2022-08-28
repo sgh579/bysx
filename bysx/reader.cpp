@@ -46,6 +46,8 @@ void reader::handleTimeout()
         m_standardOutput << QObject::tr("Data successfully received from port %1").arg(m_serialPort->portName()) << endl;
 //        qDebug()<< QObject::tr("Data successfully received from port %1").arg(m_serialPort->portName()) << endl;
         m_standardOutput << m_readData << endl;//通过标准输出把读到的在终端里输出
+
+
 //        qDebug()<< m_readData << endl;//通过标准输出把读到的在终端里输出
 //        qDebug()<< m_readData.toHex() << endl;//通过标准输出把读到的在终端里输出
     }

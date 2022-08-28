@@ -21,6 +21,9 @@
 #include "writer.h"
 
 
+#include "protocol.h"
+#include "equipment.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 class QPushButton;
@@ -43,7 +46,8 @@ private:
     reader *serialPortReader;
     writer *serialPortWriter;
     QTextStream m_standardOutput;
-
+    protocol *ui_pro;
+    equipment *ui_equ;
 
 private slots:
     void debugButtonCallback();
