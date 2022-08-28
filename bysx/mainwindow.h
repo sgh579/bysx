@@ -52,7 +52,7 @@ private:
 
 public slots:
     void debugButtonCallback();
-    void call_decode(QByteArray m_readData);
+
 
 };
 #endif // MAINWINDOW_H

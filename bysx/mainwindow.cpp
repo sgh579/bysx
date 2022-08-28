@@ -36,8 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     serialPortWriter->write();
 
     serialPortReader = new reader(&serialPort);
-    //connect(serialPortReader,&reader::read_ready_decode_signal,ui_pro,&protocol::decode);
-    connect(serialPortReader,&reader::read_ready_decode_signal,this,&MainWindow::call_decode);
+    connect(serialPortReader,&reader::read_ready_decode_signal,ui_pro,&protocol::decode);
+
 
 
 }
@@ -61,10 +61,4 @@ void MainWindow::debugButtonCallback()
 }
 
 
-void MainWindow::call_decode(QByteArray m_readData)
-{
-    qDebug()<<"call_decode"<<endl;
-    if(ui_pro->decode(m_readData) == true)qDebug()<<"decode sucessfull"<<endl;
-        else qDebug()<<"decode fail"<<endl;
 
-}
