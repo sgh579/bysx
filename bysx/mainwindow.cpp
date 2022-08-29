@@ -14,8 +14,9 @@ MainWindow::MainWindow(QWidget *parent)
     , findPortTimerPeriod(1000)
 {
     ui->setupUi(this);
+
+//    ui_equ = new equipment();
     ui_pro = new protocol();
-    ui_equ = new equipment();
 
     m_standardOutput<<"hello bysx,here is mainwindow()"<<endl;
 

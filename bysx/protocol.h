@@ -10,9 +10,9 @@ class protocol : public QObject
 {
     Q_OBJECT
 public:
-    explicit protocol(QObject *parent = nullptr,equipment *a);
+    explicit protocol(QObject *parent = nullptr);
 //    ~protocol();
-    void getAddress();
+    bool getAddress();
     void code();
     void talk();//包含一次完整的询问
 public slots:
