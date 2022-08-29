@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>661</width>
+    <width>726</width>
     <height>610</height>
    </rect>
   </property>
@@ -143,7 +143,7 @@
       </item>
       <item row="0" column="1">
        <property name="text">
-        <string>1</string>
+        <string/>
        </property>
       </item>
       <item row="0" column="2">
@@ -168,7 +168,7 @@
       </item>
       <item row="0" column="3">
        <property name="text">
-        <string>2</string>
+        <string/>
        </property>
       </item>
       <item row="1" column="0">
@@ -193,7 +193,7 @@
       </item>
       <item row="1" column="1">
        <property name="text">
-        <string>3</string>
+        <string/>
        </property>
       </item>
       <item row="1" column="2">
@@ -218,7 +218,7 @@
       </item>
       <item row="1" column="3">
        <property name="text">
-        <string>4</string>
+        <string/>
        </property>
       </item>
       <item row="2" column="0">
@@ -328,7 +328,7 @@
       </item>
       <item row="4" column="1">
        <property name="text">
-        <string>12</string>
+        <string/>
        </property>
       </item>
       <item row="4" column="2">
@@ -398,7 +398,7 @@
       </item>
       <item row="5" column="3">
        <property name="text">
-        <string>15</string>
+        <string/>
        </property>
       </item>
      </widget>
@@ -595,7 +595,7 @@
       </item>
       <item row="0" column="1">
        <property name="text">
-        <string>1</string>
+        <string/>
        </property>
       </item>
       <item row="1" column="0">
@@ -610,7 +610,7 @@
       </item>
       <item row="2" column="2">
        <property name="text">
-        <string>5</string>
+        <string/>
        </property>
       </item>
       <item row="3" column="0">
@@ -625,7 +625,7 @@
       </item>
       <item row="4" column="4">
        <property name="text">
-        <string>7</string>
+        <string/>
        </property>
       </item>
      </widget>
@@ -751,8 +751,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>661</width>
-     <height>26</height>
+     <width>726</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

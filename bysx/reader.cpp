@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include <QTime>
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include <string>
 
 reader::reader(QSerialPort *serialPort, QObject *parent)

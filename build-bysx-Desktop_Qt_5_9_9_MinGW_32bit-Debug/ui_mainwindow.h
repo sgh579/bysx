@@ -50,7 +50,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(661, 610);
+        MainWindow->resize(726, 610);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -340,7 +340,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 661, 26));
+        menubar->setGeometry(QRect(0, 0, 726, 22));
         MainWindow->setMenuBar(menubar);
 
         retranslateUi(MainWindow);
@@ -376,73 +376,55 @@ public:
         tableWidget->setSortingEnabled(false);
         QTableWidgetItem *___qtablewidgetitem10 = tableWidget->item(0, 0);
         ___qtablewidgetitem10->setText(QApplication::translate("MainWindow", "\350\241\250\345\217\267", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem11 = tableWidget->item(0, 1);
-        ___qtablewidgetitem11->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem12 = tableWidget->item(0, 2);
-        ___qtablewidgetitem12->setText(QApplication::translate("MainWindow", "\351\242\235\345\256\232\347\224\265\345\216\213", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem13 = tableWidget->item(0, 3);
-        ___qtablewidgetitem13->setText(QApplication::translate("MainWindow", "2", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem14 = tableWidget->item(1, 0);
-        ___qtablewidgetitem14->setText(QApplication::translate("MainWindow", "\351\200\232\344\277\241\350\247\204\347\272\246", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem15 = tableWidget->item(1, 1);
-        ___qtablewidgetitem15->setText(QApplication::translate("MainWindow", "3", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem16 = tableWidget->item(1, 2);
-        ___qtablewidgetitem16->setText(QApplication::translate("MainWindow", "\351\242\235\345\256\232\347\224\265\346\265\201", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem17 = tableWidget->item(1, 3);
-        ___qtablewidgetitem17->setText(QApplication::translate("MainWindow", "4", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem18 = tableWidget->item(2, 0);
-        ___qtablewidgetitem18->setText(QApplication::translate("MainWindow", "\346\263\242\347\211\271\347\216\207", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem19 = tableWidget->item(2, 2);
-        ___qtablewidgetitem19->setText(QApplication::translate("MainWindow", "\346\234\211\345\212\237\345\270\270\346\225\260", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem20 = tableWidget->item(3, 0);
-        ___qtablewidgetitem20->setText(QApplication::translate("MainWindow", "\351\200\232\344\277\241\345\234\260\345\235\200", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem21 = tableWidget->item(3, 2);
-        ___qtablewidgetitem21->setText(QApplication::translate("MainWindow", "\346\234\211\345\212\237\347\255\211\347\272\247", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem22 = tableWidget->item(4, 0);
-        ___qtablewidgetitem22->setText(QApplication::translate("MainWindow", "\350\241\250\346\227\266\351\227\264", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem23 = tableWidget->item(4, 1);
-        ___qtablewidgetitem23->setText(QApplication::translate("MainWindow", "12", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem24 = tableWidget->item(4, 2);
-        ___qtablewidgetitem24->setText(QApplication::translate("MainWindow", "\346\227\240\345\212\237\345\270\270\346\225\260", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem25 = tableWidget->item(5, 2);
-        ___qtablewidgetitem25->setText(QApplication::translate("MainWindow", "\346\227\240\345\212\237\347\255\211\347\272\247", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem26 = tableWidget->item(5, 3);
-        ___qtablewidgetitem26->setText(QApplication::translate("MainWindow", "15", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem11 = tableWidget->item(0, 2);
+        ___qtablewidgetitem11->setText(QApplication::translate("MainWindow", "\351\242\235\345\256\232\347\224\265\345\216\213", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem12 = tableWidget->item(1, 0);
+        ___qtablewidgetitem12->setText(QApplication::translate("MainWindow", "\351\200\232\344\277\241\350\247\204\347\272\246", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem13 = tableWidget->item(1, 2);
+        ___qtablewidgetitem13->setText(QApplication::translate("MainWindow", "\351\242\235\345\256\232\347\224\265\346\265\201", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem14 = tableWidget->item(2, 0);
+        ___qtablewidgetitem14->setText(QApplication::translate("MainWindow", "\346\263\242\347\211\271\347\216\207", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem15 = tableWidget->item(2, 2);
+        ___qtablewidgetitem15->setText(QApplication::translate("MainWindow", "\346\234\211\345\212\237\345\270\270\346\225\260", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem16 = tableWidget->item(3, 0);
+        ___qtablewidgetitem16->setText(QApplication::translate("MainWindow", "\351\200\232\344\277\241\345\234\260\345\235\200", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem17 = tableWidget->item(3, 2);
+        ___qtablewidgetitem17->setText(QApplication::translate("MainWindow", "\346\234\211\345\212\237\347\255\211\347\272\247", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem18 = tableWidget->item(4, 0);
+        ___qtablewidgetitem18->setText(QApplication::translate("MainWindow", "\350\241\250\346\227\266\351\227\264", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem19 = tableWidget->item(4, 2);
+        ___qtablewidgetitem19->setText(QApplication::translate("MainWindow", "\346\227\240\345\212\237\345\270\270\346\225\260", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem20 = tableWidget->item(5, 2);
+        ___qtablewidgetitem20->setText(QApplication::translate("MainWindow", "\346\227\240\345\212\237\347\255\211\347\272\247", Q_NULLPTR));
         tableWidget->setSortingEnabled(__sortingEnabled);
 
-        QTableWidgetItem *___qtablewidgetitem27 = tableWidget_2->horizontalHeaderItem(0);
-        ___qtablewidgetitem27->setText(QApplication::translate("MainWindow", "\350\264\271\347\216\207\347\247\215\347\261\273", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem28 = tableWidget_2->horizontalHeaderItem(1);
-        ___qtablewidgetitem28->setText(QApplication::translate("MainWindow", "\346\255\243\345\220\221\346\234\211\345\212\237\n"
+        QTableWidgetItem *___qtablewidgetitem21 = tableWidget_2->horizontalHeaderItem(0);
+        ___qtablewidgetitem21->setText(QApplication::translate("MainWindow", "\350\264\271\347\216\207\347\247\215\347\261\273", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem22 = tableWidget_2->horizontalHeaderItem(1);
+        ___qtablewidgetitem22->setText(QApplication::translate("MainWindow", "\346\255\243\345\220\221\346\234\211\345\212\237\n"
 "[kWh]", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem29 = tableWidget_2->horizontalHeaderItem(2);
-        ___qtablewidgetitem29->setText(QApplication::translate("MainWindow", "\346\255\243\345\220\221\346\227\240\345\212\237\n"
+        QTableWidgetItem *___qtablewidgetitem23 = tableWidget_2->horizontalHeaderItem(2);
+        ___qtablewidgetitem23->setText(QApplication::translate("MainWindow", "\346\255\243\345\220\221\346\227\240\345\212\237\n"
 "[kvarh]", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem30 = tableWidget_2->horizontalHeaderItem(3);
-        ___qtablewidgetitem30->setText(QApplication::translate("MainWindow", "\345\217\215\345\220\221\346\234\211\345\212\237\n"
+        QTableWidgetItem *___qtablewidgetitem24 = tableWidget_2->horizontalHeaderItem(3);
+        ___qtablewidgetitem24->setText(QApplication::translate("MainWindow", "\345\217\215\345\220\221\346\234\211\345\212\237\n"
 "[kWh]", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem31 = tableWidget_2->horizontalHeaderItem(4);
-        ___qtablewidgetitem31->setText(QApplication::translate("MainWindow", "\345\217\215\345\220\221\346\227\240\345\212\237\n"
+        QTableWidgetItem *___qtablewidgetitem25 = tableWidget_2->horizontalHeaderItem(4);
+        ___qtablewidgetitem25->setText(QApplication::translate("MainWindow", "\345\217\215\345\220\221\346\227\240\345\212\237\n"
 "[kvarh]", Q_NULLPTR));
 
         const bool __sortingEnabled1 = tableWidget_2->isSortingEnabled();
         tableWidget_2->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem32 = tableWidget_2->item(0, 0);
-        ___qtablewidgetitem32->setText(QApplication::translate("MainWindow", "\346\200\273", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem33 = tableWidget_2->item(0, 1);
-        ___qtablewidgetitem33->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem34 = tableWidget_2->item(1, 0);
-        ___qtablewidgetitem34->setText(QApplication::translate("MainWindow", "\345\260\226", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem35 = tableWidget_2->item(2, 0);
-        ___qtablewidgetitem35->setText(QApplication::translate("MainWindow", "\345\263\260", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem36 = tableWidget_2->item(2, 2);
-        ___qtablewidgetitem36->setText(QApplication::translate("MainWindow", "5", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem37 = tableWidget_2->item(3, 0);
-        ___qtablewidgetitem37->setText(QApplication::translate("MainWindow", "\345\271\263", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem38 = tableWidget_2->item(4, 0);
-        ___qtablewidgetitem38->setText(QApplication::translate("MainWindow", "\350\260\267", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem39 = tableWidget_2->item(4, 4);
-        ___qtablewidgetitem39->setText(QApplication::translate("MainWindow", "7", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem26 = tableWidget_2->item(0, 0);
+        ___qtablewidgetitem26->setText(QApplication::translate("MainWindow", "\346\200\273", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem27 = tableWidget_2->item(1, 0);
+        ___qtablewidgetitem27->setText(QApplication::translate("MainWindow", "\345\260\226", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem28 = tableWidget_2->item(2, 0);
+        ___qtablewidgetitem28->setText(QApplication::translate("MainWindow", "\345\263\260", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem29 = tableWidget_2->item(3, 0);
+        ___qtablewidgetitem29->setText(QApplication::translate("MainWindow", "\345\271\263", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem30 = tableWidget_2->item(4, 0);
+        ___qtablewidgetitem30->setText(QApplication::translate("MainWindow", "\350\260\267", Q_NULLPTR));
         tableWidget_2->setSortingEnabled(__sortingEnabled1);
 
         label_3->setText(QApplication::translate("MainWindow", "\350\257\273\350\241\250\346\210\220\345\212\237", Q_NULLPTR));

@@ -2,7 +2,7 @@
 #define READER_H
 
 #include <QtSerialPort/QSerialPort>
-#include "protocol.h"
+
 #include <QTextStream>
 #include <QTimer>
 #include <QByteArray>
@@ -24,7 +24,7 @@ private slots:
     void handleTimeout();
     void handleError(QSerialPort::SerialPortError error);
 
-private:
+public:
     QSerialPort *m_serialPort;
     QByteArray  m_readData;
     QTextStream m_standardOutput;

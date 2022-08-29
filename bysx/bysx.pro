@@ -21,15 +21,15 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     protocol.cpp \
-    reader.cpp \
-    writer.cpp
+    writer.cpp\
+    reader.cpp
 
 HEADERS += \
     equipment.h \
     mainwindow.h \
     protocol.h \
-    reader.h \
-    writer.h
+    writer.h\
+    reader.h
 
 FORMS += \
     mainwindow.ui

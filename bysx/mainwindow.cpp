@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 //    ui_equ = new equipment();
     ui_pro = new protocol();
 
@@ -30,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     //连接串口
     connect(ui->pushButton_2,&QPushButton::clicked,this,&MainWindow::setPortParameter);
 
-
+    connect(ui->pushButton,&QPushButton::clicked,this,&MainWindow::tableToExcel);
 
     //以下为变量导入tableWidget
 
@@ -54,8 +56,15 @@ void MainWindow::debugButtonCallback()
 //    if(ui_pro->decode(debug_read_data) == true)qDebug()<<"decode sucessfull"<<endl;
 //    else qDebug()<<"decode fail"<<endl;
 
-    serialPortReader->emit_debug_signal();
+//    serialPortReader->emit_debug_signal();
+
+    ui_pro->talk(this->serialPortWriter,this->serialPortReader);
+
     //ui_pro->printMember();
+
+    //i->tableWidget->setItem(0,0,new QTableWidgetItem(tr("hello")));
+
+    fill_the_table();
 
 }
 
@@ -195,3 +204,44 @@ bool MainWindow::SetCellData(int row, int column, QVariant data)
 
     return op;
 }
+
+void MainWindow::fill_the_table()
+{
+    //t1
+    ui->tableWidget->setItem(0,1,new QTableWidgetItem(this->ui_pro->current_equ->ID));
+    ui->tableWidget->setItem(0,3,new QTableWidgetItem(this->ui_pro->current_equ->ratedVoltage));
+    ui->tableWidget->setItem(1,3,new QTableWidgetItem(this->ui_pro->current_equ->ratedCurrent));
+    ui->tableWidget->setItem(4,1,new QTableWidgetItem(this->ui_pro->current_equ->equ_date + this->ui_pro->current_equ->equ_time));
+    ui->tableWidget->setItem(2,3,new QTableWidgetItem(this->ui_pro->current_equ->constant_active));
+    ui->tableWidget->setItem(3,3,new QTableWidgetItem(this->ui_pro->current_equ->level_active));
+
+    //t2
+    ui->tableWidget_2->setItem(0,1,new QTableWidgetItem(this->ui_pro->current_equ->all_pos_active));
+    ui->tableWidget_2->setItem(1,1,new QTableWidgetItem(this->ui_pro->current_equ->jian_pos_active));
+    ui->tableWidget_2->setItem(2,1,new QTableWidgetItem(this->ui_pro->current_equ->feng_pos_active));
+    ui->tableWidget_2->setItem(3,1,new QTableWidgetItem(this->ui_pro->current_equ->ping_pos_active));
+    ui->tableWidget_2->setItem(4,1,new QTableWidgetItem(this->ui_pro->current_equ->gu_pos_active));
+
+    ui->tableWidget_2->setItem(0,3,new QTableWidgetItem(this->ui_pro->current_equ->all_neg_active));
+    ui->tableWidget_2->setItem(1,3,new QTableWidgetItem(this->ui_pro->current_equ->jian_neg_active));
+    ui->tableWidget_2->setItem(2,3,new QTableWidgetItem(this->ui_pro->current_equ->feng_neg_active));
+    ui->tableWidget_2->setItem(3,3,new QTableWidgetItem(this->ui_pro->current_equ->ping_neg_active));
+    ui->tableWidget_2->setItem(4,3,new QTableWidgetItem(this->ui_pro->current_equ->gu_neg_active));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,4 @@
+
 #include "protocol.h"
 #include <QCoreApplication>
 protocol::protocol(QObject *parent)
@@ -101,10 +102,109 @@ void protocol::printMember(){
 
 
 //以一定时间间隔发出请求信息，将所有得到的信息放在一个地方(reader::m_readData)，最后统一解码
-void protocol::talk()
+void protocol::talk(writer *serialPortWriter,reader *serialPortReader)
 {
+    int sleep_interval = 350;
+
+    QByteArray ba_ID = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 37 33 37 35 8e 16");
+    QByteArray ba_date = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 34 34 33 37 8a 16");
+    QByteArray ba_time = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 35 34 33 37 8b 16");
+    QByteArray ba_U = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 37 37 33 37 90 16");
+    QByteArray ba_A = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 38 37 33 37 91 16");
+    QByteArray ba_constant_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 3c 37 33 37 95 16");
+    QByteArray ba_level_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 3a 37 33 37 93 16");
+
+    QByteArray ba_all_pos_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 33 34 33 85 16");
+    QByteArray ba_jian_pos_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 34 34 33 86 16");
+    QByteArray ba_feng_pos_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 35 34 33 87 16");
+    QByteArray ba_ping_pos_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 36 34 33 88 16");
+    QByteArray ba_gu_pos_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 37 34 33 89 16");
+
+    QByteArray ba_all_neg_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 33 35 33 86 16");
+    QByteArray ba_jian_neg_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 34 35 33 87 16");
+    QByteArray ba_feng_neg_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 35 35 33 88 16");
+    QByteArray ba_ping_neg_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 36 35 33 89 16");
+    QByteArray ba_gu_neg_active = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 33 37 35 33 8a 16");
+
+
+
+
+    serialPortWriter->m_writeData =ba_ID;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_date;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_time;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_U;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_A;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_constant_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_level_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+
+    serialPortWriter->m_writeData =ba_all_pos_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_jian_pos_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_feng_pos_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_ping_pos_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_gu_pos_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+
+    serialPortWriter->m_writeData =ba_all_neg_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_jian_neg_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_feng_neg_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_ping_neg_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    serialPortWriter->m_writeData =ba_gu_neg_active;
+    serialPortWriter->write();
+    my_sleep(sleep_interval);
+
+    decode(serialPortReader->m_readData);
+    serialPortReader->m_readData.clear();
 
 }
+
+
 
 //data 就是数据区域的字节串 返回值就是这一次读取是否成功
 bool protocol::decode_frame(const QByteArray data)
@@ -121,7 +221,7 @@ bool protocol::decode_frame(const QByteArray data)
         mm[0]= data[5];
         QByteArray ss;
         ss[0]= data[4];
-        this->current_equ->equ_time =hh.toHex() +" "+ mm.toHex() +" " + ss.toHex();
+        this->current_equ->equ_time =hh.toHex() +":"+ mm.toHex() +":" + ss.toHex();
     }
 
     //日期 01 01 00 04
@@ -136,7 +236,7 @@ bool protocol::decode_frame(const QByteArray data)
         QByteArray ww;
         ww[0]= data[4];
 
-        this->current_equ->equ_date =yy.toHex() +"年"+ mm.toHex() +"月" + dd.toHex()+"日"+" 星期"+ww.toHex();
+        this->current_equ->equ_date =yy.toHex() +"年"+ mm.toHex() +"月" + dd.toHex()+"日"+" (星期"+ww.toHex() + ") ";
     }
 
     //表号 02 04  00 04
@@ -267,4 +367,15 @@ bool protocol::getAddress()
 {
     current_equ->addr = QByteArray::fromHex("18 55 60 06 00 00");
     return true;
+}
+
+
+void protocol::my_sleep(int ms)
+{
+    QTime interval_timer;
+    interval_timer.start();
+    while(interval_timer.elapsed()<ms)
+    {
+        QCoreApplication::processEvents();
+    }
 }

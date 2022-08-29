@@ -25,6 +25,8 @@
 #include "writer.h"
 
 
+
+
 #include "protocol.h"
 #include "equipment.h"
 
@@ -45,6 +47,7 @@ public:
     ~MainWindow();
     void tableToExcel();
     bool SetCellData(int row, int column, QVariant data);
+    void fill_the_table();
 
 
 private:
@@ -55,7 +58,6 @@ private:
     writer *serialPortWriter;
     QTextStream m_standardOutput;
     protocol *ui_pro;
-    equipment *ui_equ;
     int findPortTimerPeriod;
     QTimer findPortTimer;
 

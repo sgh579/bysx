@@ -3,11 +3,11 @@ INPUT(
 ./debug\main.o
 ./debug\mainwindow.o
 ./debug\protocol.o
-./debug\reader.o
 ./debug\writer.o
+./debug\reader.o
 ./debug\qrc_res.o
 ./debug\moc_mainwindow.o
 ./debug\moc_protocol.o
-./debug\moc_reader.o
 ./debug\moc_writer.o
+./debug\moc_reader.o
 );

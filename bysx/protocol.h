@@ -3,9 +3,16 @@
 #include <QByteArray>
 #include <QString>
 #include <QDebug>
-#include <reader.h>
+
 #include <QObject>
 #include "equipment.h"
+#include "reader.h"
+#include "writer.h"
+
+
+
+#include<QTime>
+
 class protocol : public QObject
 {
     Q_OBJECT
@@ -14,13 +21,14 @@ public:
 //    ~protocol();
     bool getAddress();
     void code();
-    void talk();//包含一次完整的询问
+    void talk(writer *serialPortWriter,reader *serialPortReader);//包含一次完整的询问
+    void my_sleep(int ms);
 public slots:
     bool decode(const QByteArray m_readData);
     void printMember();
     bool decode_frame(const QByteArray data);
 
-private:
+public:
     uint8_t ctrl_code;//控制码C
     int data_length;
     QByteArray data;
