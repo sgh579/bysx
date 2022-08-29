@@ -23,7 +23,10 @@ bool protocol::decode(const QByteArray m_readData)
 //    if((uint8_t)m_readData[0] == 0xfe)qDebug()<<"m_readData[0] == 0xfe ok"<<endl;
 //    else qDebug()<<"m_readData[0] == 0xfe not ok"<<endl;
 //     qDebug()<<"m_readData[0] ="<<(uint8_t)m_readData[0]<<endl;
+    int frame_count = 0;
+    int decoded_frame_count = 0;
 
+    //循环读帧
     while(cache_length>8){
 
         //找出一个帧
@@ -40,7 +43,12 @@ bool protocol::decode(const QByteArray m_readData)
 
         ctrl_code =temp_readData[frame_start_index+8];
         data_length =temp_readData[frame_start_index+9];
-        if((uint8_t)temp_readData[frame_start_index+11+data_length] != 0x16)return false;//说明传输有错误，整个重来
+        if((uint8_t)temp_readData[frame_start_index+11+data_length] != 0x16)
+        {
+            qDebug()<<"尾16校验失败"<<endl;
+//            return false;//说明传输有错误，整个重来
+            break;
+        }
         //qDebug()<<"data_length"<<data_length<<endl;
         if(data_length>0){
             data = temp_readData.mid(frame_start_index+10,data_length);
@@ -51,29 +59,48 @@ bool protocol::decode(const QByteArray m_readData)
         else data.resize(0);
         //    char CS = m_readData[frame_start_index+10+data_length];
         //校验暂时省略
-        decode_frame(data);//找到一帧，就去读帧，保存到equipmemnt里面
+        if(decode_frame(data))decoded_frame_count++;//找到一帧，就去读帧，保存到equipmemnt里面
+        frame_count++;
+        //printMember();
 
-        printMember();
-
-        //把暂存区一开始到这一帧结束的东西全部删除
-        temp_readData.remove(0,frame_start_index+12+data_length);
+        //把这一帧东西全部删除
+        temp_readData.remove(frame_start_index,12+data_length);
+        qDebug()<<"删除一帧后temp_readData："<<temp_readData.toHex()<<endl;
         cache_length = temp_readData.length();
         frame_start_index = 0;
     }
+    qDebug()<<"共找到帧数："<<frame_count<<endl;
+    qDebug()<<"共解析成功帧数："<<decoded_frame_count<<endl;
+    printMember();
     return true;
 }
 
 void protocol::printMember(){
     qDebug()<<"***************printMember****************"<<endl;
-    qDebug()<<"addr"<<addr.toHex()<<endl;
-    qDebug()<<"ctrl_code"<<ctrl_code<<endl;
-    qDebug()<<"data length"<<data_length<<endl;
-    qDebug()<<"data"<<data.toHex()<<endl;
+    qDebug()<<"addr"<<this->current_equ->addr.toHex()<<endl;
+    qDebug()<<"equ_date "<<this->current_equ->equ_date<<endl;
+    qDebug()<<"equ_time "<<this->current_equ->equ_time<<endl;
+    qDebug()<<"ratedVoltage "<<this->current_equ->ratedVoltage<<endl;
+    qDebug()<<"ratedCurrent "<<this->current_equ->ratedCurrent<<endl;
+    qDebug()<<"constant_active "<<this->current_equ->constant_active<<endl;
+
+    qDebug()<<"all_pos_active "<<this->current_equ->all_pos_active<<endl;
+    qDebug()<<"jian_pos_active "<<this->current_equ->jian_pos_active<<endl;
+    qDebug()<<"feng_pos_active "<<this->current_equ->feng_pos_active<<endl;
+    qDebug()<<"ping_pos_active "<<this->current_equ->ping_pos_active<<endl;
+    qDebug()<<"gu_pos_active "<<this->current_equ->gu_pos_active<<endl;
+
+    qDebug()<<"all_neg_active "<<this->current_equ->all_neg_active<<endl;
+    qDebug()<<"jian_neg_active "<<this->current_equ->jian_neg_active<<endl;
+    qDebug()<<"feng_neg_active "<<this->current_equ->feng_neg_active<<endl;
+    qDebug()<<"ping_neg_active "<<this->current_equ->ping_neg_active<<endl;
+    qDebug()<<"gu_neg_active "<<this->current_equ->gu_neg_active<<endl;
+
     qDebug()<<"*****************************************"<<endl;
 }
 
 
-//以一定时间间隔发出请求信息，将所有得到的信息放在一个地方，最后统一解码
+//以一定时间间隔发出请求信息，将所有得到的信息放在一个地方(reader::m_readData)，最后统一解码
 void protocol::talk()
 {
 
@@ -101,15 +128,15 @@ bool protocol::decode_frame(const QByteArray data)
     else if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[3] == 0x04)){
         if(data.size()<8)return false;
         QByteArray yy;
-        yy[0]= data[6];
+        yy[0]= data[7];
         QByteArray mm;
-        mm[0]= data[5];
+        mm[0]= data[6];
         QByteArray dd;
-        dd[0]= data[4];
+        dd[0]= data[5];
         QByteArray ww;
         ww[0]= data[4];
 
-        this->current_equ->equ_time =yy.toHex() +"年"+ mm.toHex() +"月" + dd.toHex()+"日"+" 星期"+ww.toHex();
+        this->current_equ->equ_date =yy.toHex() +"年"+ mm.toHex() +"月" + dd.toHex()+"日"+" 星期"+ww.toHex();
     }
 
     //表号 02 04  00 04
@@ -184,7 +211,7 @@ bool protocol::decode_frame(const QByteArray data)
         {
             temp_ba[i]= constant_ba[constant_ba.size()-1-i];
         }
-        switch((uint8_t)dataID[2]){
+        switch((uint8_t)dataID[1]){
             case 0:this->current_equ->all_pos_active = temp_ba.mid(0,3).toHex()+"."+temp_ba.mid(3,1).toHex();
             break;
 
@@ -213,7 +240,7 @@ bool protocol::decode_frame(const QByteArray data)
         {
             temp_ba[i]= constant_ba[constant_ba.size()-1-i];
         }
-        switch((uint8_t)dataID[2]){
+        switch((uint8_t)dataID[1]){
             case 0:this->current_equ->all_neg_active = temp_ba.mid(0,3).toHex()+"."+temp_ba.mid(3,1).toHex();
             break;
 

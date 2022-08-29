@@ -12,6 +12,7 @@ public:
     QString ID;//表号 12位
 
     QString equ_time;// ok
+    QString equ_date;// ok
     QByteArray addr;//通信地址 ok
     QString ratedVoltage;//额定电压 ok
     QString ratedCurrent;//额定电流 ok
