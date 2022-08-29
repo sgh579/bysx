@@ -48,6 +48,7 @@ public:
     void tableToExcel();
     bool SetCellData(int row, int column, QVariant data);
     void fill_the_table();
+    void auto_update_data();
 
 
 private:
@@ -60,6 +61,8 @@ private:
     protocol *ui_pro;
     int findPortTimerPeriod;
     QTimer findPortTimer;
+    int auto_update_interval_period;
+    QTimer auto_update_Timer;
 
 
 public slots:

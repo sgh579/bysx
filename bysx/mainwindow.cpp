@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , m_standardOutput(stdout)
     , findPortTimerPeriod(1000)
+    , auto_update_interval_period(60000)
 {
     ui->setupUi(this);
 
@@ -36,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     //以下为变量导入tableWidget
 
+    //自动更新
+    connect(&auto_update_Timer,&QTimer::timeout,this,&MainWindow::auto_update_data);
 
 
 
@@ -58,13 +61,13 @@ void MainWindow::debugButtonCallback()
 
 //    serialPortReader->emit_debug_signal();
 
-    ui_pro->talk(this->serialPortWriter,this->serialPortReader);
+//    ui_pro->talk(this->serialPortWriter,this->serialPortReader);
 
     //ui_pro->printMember();
 
     //i->tableWidget->setItem(0,0,new QTableWidgetItem(tr("hello")));
 
-    fill_the_table();
+//    fill_the_table();
 
 }
 
@@ -113,6 +116,14 @@ void MainWindow::setPortParameter()
 
     serialPortReader = new reader(&serialPort);
     connect(serialPortReader,&reader::read_ready_decode_signal,ui_pro,&protocol::decode);
+
+    //串口连接了，才能自动更新
+    auto_update_Timer.start(auto_update_interval_period);
+
+    //确定端口了直接talk
+    ui_pro->talk(this->serialPortWriter,this->serialPortReader);
+    fill_the_table();
+
 }
 
 void MainWindow::tableToExcel()
@@ -230,7 +241,12 @@ void MainWindow::fill_the_table()
 }
 
 
-
+void MainWindow::auto_update_data()
+{
+    ui_pro->talk(this->serialPortWriter,this->serialPortReader);
+    fill_the_table();
+    auto_update_Timer.start(auto_update_interval_period);
+}
 
 
 

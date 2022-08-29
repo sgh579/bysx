@@ -104,7 +104,7 @@ void protocol::printMember(){
 //以一定时间间隔发出请求信息，将所有得到的信息放在一个地方(reader::m_readData)，最后统一解码
 void protocol::talk(writer *serialPortWriter,reader *serialPortReader)
 {
-    int sleep_interval = 350;
+    int sleep_interval = 333;
 
     QByteArray ba_ID = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 37 33 37 35 8e 16");
     QByteArray ba_date = QByteArray::fromHex("68 18 55 60 06 00 00 68 11 04 34 34 33 37 8a 16");
