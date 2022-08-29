@@ -25,7 +25,7 @@ private slots:
     void handleError(QSerialPort::SerialPortError error);
 
 
-private:
+public:
     QSerialPort     *m_serialPort;
     QByteArray      m_writeData;
     QTextStream     m_standardOutput;

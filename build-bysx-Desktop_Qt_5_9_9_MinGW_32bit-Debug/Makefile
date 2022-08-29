@@ -226,6 +226,7 @@ Makefile: ../bysx/bysx.pro C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmak
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/moc.prf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/win32/opengl.prf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/uic.prf \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/win32/dumpcpp.prf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/qmake_use.prf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/file_copies.prf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/win32/windows.prf \
@@ -235,6 +236,8 @@ Makefile: ../bysx/bysx.pro C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmak
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/lex.prf \
 		../bysx/bysx.pro \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/qtmaind.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5AxContainer.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5AxBase.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl \
@@ -405,6 +408,7 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/resources.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/moc.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/win32/opengl.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/uic.prf:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/win32/dumpcpp.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/qmake_use.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/file_copies.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/win32/windows.prf:
@@ -414,6 +418,8 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/lex.prf:
 ../bysx/bysx.pro:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/qtmaind.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5AxContainer.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5AxBase.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl:

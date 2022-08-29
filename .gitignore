@@ -1,3 +1,5 @@
 *.zip
 *.pdf
 *.exe
+*.user
+bysx/bysx.pro.user

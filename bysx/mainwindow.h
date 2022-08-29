@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QTableWidget>
+#include <QFileDialog>
+#include <QDesktopServices>
+#include <QMessageBox>
+#include <QAxObject>
 
 #include <QPushButton>
 #include <QGridLayout>
@@ -21,6 +25,11 @@
 #include "writer.h"
 
 
+
+
+#include "protocol.h"
+#include "equipment.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 class QPushButton;
@@ -31,10 +40,16 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    QAxObject *worksheet;
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void tableToExcel();
+    bool SetCellData(int row, int column, QVariant data);
+    void fill_the_table();
+    void auto_update_data();
+
 
 private:
     Ui::MainWindow *ui;
@@ -43,10 +58,18 @@ private:
     reader *serialPortReader;
     writer *serialPortWriter;
     QTextStream m_standardOutput;
+    protocol *ui_pro;
+    int findPortTimerPeriod;
+    QTimer findPortTimer;
+    int auto_update_interval_period;
+    QTimer auto_update_Timer;
 
 
-private slots:
+public slots:
     void debugButtonCallback();
+    void findPort();//主动更新可用串口
+    void setPortParameter();//设置要打开的串口参数，并打开，实例化writer,reader对象，开始接收
+
 
 };
 #endif // MAINWINDOW_H
