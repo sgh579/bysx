@@ -1,9 +1,10 @@
 #include "protocol.h"
 #include <QCoreApplication>
-protocol::protocol(QObject *parent)
+protocol::protocol(QObject *parent,equipment *a)
     : QObject(parent)
     , get_485_message(false)
 {
+    current_equ = a;
     qDebug()<<"here are protocol"<<endl;
 }
 
@@ -78,22 +79,24 @@ void protocol::talk()
 
 }
 
+//data 就是数据区域的字节串 返回值就是这一次读取是否成功
 bool protocol::decode_frame(const QByteArray data)
 {
     qDebug()<<"decode_frame"<<endl;
     QByteArray dataID = data.mid(0,4);
 
-    //时间
+    //时间 02 01 00 04
+    if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[4] == 0x04)){
+        if(data.size()<7)return false;
+
+    }
+
+    //日期 01 01 00 04
     if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[4] == 0x04)){
 
     }
 
-    //日期
-    if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[4] == 0x04)){
-
-    }
-
-    //表号
+    //表号 02 04  00 04
     if(((uint8_t)dataID[0] == 0x01) && ((uint8_t)dataID[1] == 0x01) && ((uint8_t)dataID[2] == 0x00) && ((uint8_t)dataID[4] == 0x04)){
 
     }

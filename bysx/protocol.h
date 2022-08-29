@@ -5,11 +5,12 @@
 #include <QDebug>
 #include <reader.h>
 #include <QObject>
+#include "equipment.h"
 class protocol : public QObject
 {
     Q_OBJECT
 public:
-    explicit protocol(QObject *parent = nullptr);
+    explicit protocol(QObject *parent = nullptr,equipment *a);
 //    ~protocol();
     void getAddress();
     void code();
@@ -25,7 +26,7 @@ private:
     QByteArray data;
     QByteArray addr;
     bool get_485_message;
-
+    equipment *current_equ;
 
 
 };
