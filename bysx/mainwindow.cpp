@@ -97,18 +97,30 @@ void MainWindow::setPortParameter()
     serialPort.close();//先关上
     serialPort.setPortName(ui->serialPort_comboBox->currentText());
     serialPort.setParity(QSerialPort::EvenParity);
-    int serialPortBaudRate = 2400;
-    serialPort.setBaudRate(serialPortBaudRate);
-    if(!serialPort.open(QIODevice::ReadWrite))
-    {
-        qDebug()<<tr("can't open %1 ,error code %2")
-                  .arg(serialPort.portName()).arg(serialPort.error())<<endl;
-        return;
-    }
-    else
-        qDebug()<<tr(" open %1 successfully")
-                  .arg(serialPort.portName())<<endl;
+//    int serialPortBaudRate = 2400;
+    int serialPortBaudRatelist[] = {2400,1200,4800,9600,14400,19200};
+    int serialPortBaudRatelist_index = 0;
 
+    while(true)
+    {
+        serialPort.setBaudRate(serialPortBaudRatelist[serialPortBaudRatelist_index]);
+        serialPortBaudRatelist_index++;
+        if(serialPortBaudRatelist_index==6)break;
+
+        if(!serialPort.open(QIODevice::ReadWrite))
+        {
+            qDebug()<<tr("can't open %1 ,error code %2")
+                    .arg(serialPort.portName()).arg(serialPort.error())<<endl;
+//            return;
+        }
+        else
+        {
+            qDebug()<<tr(" open %1 successfully")
+                    .arg(serialPort.portName())<<endl;
+            qDebug()<<"波特率匹配成功："<<serialPortBaudRatelist[serialPortBaudRatelist_index-1]<<endl;
+            break;
+        }
+    }
 
     serialPortWriter = new writer(&serialPort);
     m_standardOutput<<"writer object built successfully"<<endl;
@@ -219,12 +231,19 @@ bool MainWindow::SetCellData(int row, int column, QVariant data)
 void MainWindow::fill_the_table()
 {
     //t1
+    this->ui_pro->current_equ->ID = "6605518";
     ui->tableWidget->setItem(0,1,new QTableWidgetItem(this->ui_pro->current_equ->ID));
     ui->tableWidget->setItem(0,3,new QTableWidgetItem(this->ui_pro->current_equ->ratedVoltage));
     ui->tableWidget->setItem(1,3,new QTableWidgetItem(this->ui_pro->current_equ->ratedCurrent));
     ui->tableWidget->setItem(4,1,new QTableWidgetItem(this->ui_pro->current_equ->equ_date + this->ui_pro->current_equ->equ_time));
     ui->tableWidget->setItem(2,3,new QTableWidgetItem(this->ui_pro->current_equ->constant_active));
     ui->tableWidget->setItem(3,3,new QTableWidgetItem(this->ui_pro->current_equ->level_active));
+
+    ui->tableWidget->setItem(1,1,new QTableWidgetItem("DL/T645-2007"));
+    ui->tableWidget->setItem(2,1,new QTableWidgetItem("2400"));
+    ui->tableWidget->setItem(3,1,new QTableWidgetItem("18 55 60 06 00 00"));
+
+
 
     //t2
     ui->tableWidget_2->setItem(0,1,new QTableWidgetItem(this->ui_pro->current_equ->all_pos_active));
@@ -238,6 +257,8 @@ void MainWindow::fill_the_table()
     ui->tableWidget_2->setItem(2,3,new QTableWidgetItem(this->ui_pro->current_equ->feng_neg_active));
     ui->tableWidget_2->setItem(3,3,new QTableWidgetItem(this->ui_pro->current_equ->ping_neg_active));
     ui->tableWidget_2->setItem(4,3,new QTableWidgetItem(this->ui_pro->current_equ->gu_neg_active));
+
+
 }
 
 
